@@ -11,11 +11,11 @@ const unsigned int max_nome = 1024;
 //
 // onde x_i: 1 <= i <= n são os elementos de l
 
-static Lista escreve_lista(FILE *output, Lista l) {
+static lista escreve_lista(FILE *output, lista l) {
 
   fprintf(output, "(");
 
-  for ( No n=primeiro_no(l); n; n=proximo_no(n) ) {
+  for ( no n=primeiro_no(l); n; n=proximo_no(n) ) {
 
     fprintf(output, "%s", nome(vert(n)));
         
@@ -39,9 +39,9 @@ static Lista escreve_lista(FILE *output, Lista l) {
 // onde v_i: 1 <= i <= n são os vértices de g e l_i: 1 <= i <= n é a lista de 
 // vizinhos de v_i tal como escrita por escreve_lista()
 
-static Grafo escreve_grafo(FILE *output, Grafo g) {
+static grafo escreve_grafo(FILE *output, grafo g) {
 
-  for ( No n=primeiro_no(vertices(g)); n; n=proximo_no(n) ) {
+  for ( no n=primeiro_no(vertices(g)); n; n=proximo_no(n) ) {
 
     fprintf(output, "%s: ", nome(vert(n)));
 
@@ -62,9 +62,9 @@ static Grafo escreve_grafo(FILE *output, Grafo g) {
 //
 // não é feita nenhuma checagem de consistência quanto à entrada
 
-static Grafo le_grafo(FILE *input) {
+static grafo le_grafo(FILE *input) {
 
-  Grafo g = cria_grafo();
+  grafo g = cria_grafo();
 
   if ( ! g )
 

@@ -1,66 +1,66 @@
 //-----------------------------------------------------------------------------
 // grafo
 
-typedef struct grafo *Grafo;
+typedef struct grafo *grafo;
 
 //-----------------------------------------------------------------------------
 // vértice de grafo
 
-typedef struct vertice *Vertice;
+typedef struct vertice *vertice;
 
 //-----------------------------------------------------------------------------
 // lista encadeada
 
-typedef struct lista *Lista;
+typedef struct lista *lista;
 
 //-----------------------------------------------------------------------------
 // nó de lista encadeada
  
-typedef struct no *No;
+typedef struct no *no;
 
 //=============================================================================
 // devolve o primeiro nó da lista l, ou NULL se l é vazia
 
-No primeiro_no(Lista l);
+no primeiro_no(lista l);
 
 //------------------------------------------------------------------------------
 // devolve o sucessor do nó n na lista encadeada 
 // ou NULL se n for o último nó de l
 
-No proximo_no(No n);
+no proximo_no(no n);
 
 //------------------------------------------------------------------------------
 // devolve o vertice armazenado em n
 
-Vertice vert(No n);
+vertice vert(no n);
 
 //------------------------------------------------------------------------------
 // devolve o nome do vértice v
 
-char *nome(Vertice v);
+char *nome(vertice v);
 
 //------------------------------------------------------------------------------
 // devolve a vizinhança de v
 
-Lista vizinhanca(Vertice v);
+lista vizinhanca(vertice v);
 
 //------------------------------------------------------------------------------
 // aloca um struct grafo, inicializa-o com um grafo vazio e devolve seu endereço
 // ou NULL em caso de erro
 
-Grafo cria_grafo(void);
+grafo cria_grafo(void);
 
 //------------------------------------------------------------------------------
 // desaloca toda a memória usada em g
 // 
 // devolve 1 em caso de sucesso e 0 caso contrário
 
-int destroi_grafo(Grafo g);
+int destroi_grafo(grafo g);
 
 //------------------------------------------------------------------------------
 // devolve a lista de vértices de g
 
-Lista vertices(Grafo g);
+lista vertices(grafo g);
 
 //------------------------------------------------------------------------------
 // devolve o vertice de g que tem nome igual a s
@@ -69,12 +69,12 @@ Lista vertices(Grafo g);
 // 
 // caso contrário, devolve NULL
 
-Vertice acha_vertice(Grafo g, char *s, int acrescenta);
+vertice acha_vertice(grafo g, char *s, int acrescenta);
 
 //------------------------------------------------------------------------------
 // acrescenta uma aresta em g ligando os vertices u e v sem verificar se
 // u e v já são vizinhos
 
-Grafo poe_aresta(Grafo g, Vertice u, Vertice v);
+grafo poe_aresta(grafo g, vertice u, vertice v);
 
 
