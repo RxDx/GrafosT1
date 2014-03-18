@@ -77,4 +77,12 @@ vertice acha_vertice(grafo g, char *s, int acrescenta);
 
 grafo poe_aresta(grafo g, vertice u, vertice v);
 
+//------------------------------------------------------------------------------
+// desaloca toda a memória usada em l
+// 
+// devolve 1 em caso de sucesso e 0 caso contrário
 
+int destroi_lista(lista l);
+int insere_arestas(vertice v, vertice u);
+int insere_no(lista l, vertice v);
+lista aloca_lista();
