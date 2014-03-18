@@ -13,8 +13,8 @@ typedef struct vertice {
 } *vertice;
 //------------------------------------------------------------------------------
 typedef struct lista {
-  int tam;
   no inicio;
+  int tam;
 } *lista;
 //------------------------------------------------------------------------------
 typedef struct no {
@@ -70,13 +70,13 @@ lista vertices(grafo g) {
 }
 //------------------------------------------------------------------------------
 vertice acha_vertice(grafo g, char *s, int acrescenta) {
-  no v = g->vertices->inicio;
-  while (v) {
-    if (v->vertice->nome == s) {
-      return v;
+  no nodo = g->vertices->inicio;
+  while (nodo) {
+    if (nodo->vertice->nome == s) {
+      return nodo->vertice;
     }
 
-    v = v->proximo;
+    nodo = nodo->proximo;
   }
 
   if (acrescenta != 0) {
@@ -90,9 +90,11 @@ vertice acha_vertice(grafo g, char *s, int acrescenta) {
     novo_vertice->arestas = aloca_lista();
 
     insere_no(g->vertices, novo_vertice);
+
+	return novo_vertice;
   }
 
-  return novo_vertice;
+  return NULL;
 }
 //------------------------------------------------------------------------------
 grafo poe_aresta(grafo g, vertice u, vertice v) {
@@ -107,11 +109,11 @@ grafo poe_aresta(grafo g, vertice u, vertice v) {
 //=============================================================================
 
 int destroi_lista(lista l) {
-  no no = l->inicio;
-  while (no) {
-    l->inicio = no->proximo;
-    free(no);
-    no = l->inicio;
+  no nodo = l->inicio;
+  while (nodo) {
+    l->inicio = nodo->proximo;
+    free(nodo);
+    nodo = l->inicio;
     l->tam--;
   }
 
@@ -146,7 +148,7 @@ int insere_no(lista l, vertice v) {
   return 1;
 }
 
-lista aloca_lista() {
+lista aloca_lista(void) {
   lista l = (lista) malloc(sizeof(lista));
   if (!l) {
     printf("Erro ao alocar lista.\n");

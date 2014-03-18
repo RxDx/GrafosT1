@@ -85,4 +85,4 @@ grafo poe_aresta(grafo g, vertice u, vertice v);
 int destroi_lista(lista l);
 int insere_arestas(vertice v, vertice u);
 int insere_no(lista l, vertice v);
-lista aloca_lista();
+lista aloca_lista(void);
