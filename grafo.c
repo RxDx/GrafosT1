@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "grafo.h"
 
 //------------------------------------------------------------------------------
@@ -72,7 +73,7 @@ lista vertices(grafo g) {
 vertice acha_vertice(grafo g, char *s, int acrescenta) {
   no nodo = g->vertices->inicio;
   while (nodo) {
-    if (nodo->vertice->nome == s) {
+    if (!strcmp(nodo->vertice->nome, s)) {
       return nodo->vertice;
     }
 
@@ -86,7 +87,8 @@ vertice acha_vertice(grafo g, char *s, int acrescenta) {
       return NULL;
     }
 
-    novo_vertice->nome = s;
+    novo_vertice->nome = (char *) malloc(256*sizeof(char));
+    novo_vertice->nome = strcpy(novo_vertice->nome, s);
     novo_vertice->arestas = aloca_lista();
 
     insere_no(g->vertices, novo_vertice);
