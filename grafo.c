@@ -19,7 +19,7 @@ typedef struct lista {
 //------------------------------------------------------------------------------
 typedef struct no {
   vertice vertice;
-  no proximo;
+  struct no *proximo;
 } *no;
 //=============================================================================
 no primeiro_no(lista l) {
@@ -47,10 +47,10 @@ grafo cria_grafo(void) {
   grafo g = (grafo) malloc(sizeof(grafo));
   if (g) {
     g->vertices = aloca_lista();
-
     return g;
   }
   
+  printf("Erro ao criar grafo.\n");
   return NULL;
 }
 //------------------------------------------------------------------------------
@@ -91,9 +91,10 @@ vertice acha_vertice(grafo g, char *s, int acrescenta) {
 
     insere_no(g->vertices, novo_vertice);
 
-	return novo_vertice;
+  	return novo_vertice;
   }
 
+  printf("Erro ao achar vertice.\n");
   return NULL;
 }
 //------------------------------------------------------------------------------
@@ -116,6 +117,13 @@ int destroi_lista(lista l) {
     nodo = l->inicio;
     l->tam--;
   }
+
+  if (l->tam != 0) {
+    printf("Erro ao destroir lista.\n");
+    return 0;
+  }
+
+  free(l);
 
   return 1;
 }
